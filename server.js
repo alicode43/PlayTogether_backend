@@ -5,11 +5,11 @@ import { generateUniqueId } from "./utils.js"; // Import the generateUniqueId fu
 import cors from "cors"; // Import the cors package
 
 const app = express();
-app.use(cors({ origin: "http://localhost:3000" })); // Use CORS middleware
+app.use(cors()); // Allow connections from any origin
 
 const server = http.createServer(app);
 
-const io = new SocketServer(server, { cors: { origin: "http://localhost:3000" } });
+const io = new SocketServer(server, { cors: { origin: "*" } });
 
 let sessions = {}; // Store sessions with video states
 
@@ -24,6 +24,7 @@ app.post("/generate-link", (req, res) => {
 
   const sessionId = generateUniqueId(); 
   sessions[sessionId] = { videoUrl, state: "paused" };
+  console.log(sessionId);
   res.json({ sessionId }); 
 });
 // app.get("/",(req, res) => {
