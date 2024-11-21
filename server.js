@@ -5,7 +5,12 @@ import { generateUniqueId } from "./utils.js"; // Import the generateUniqueId fu
 import cors from "cors"; // Import the cors package
 
 const app = express();
-app.use(cors()); // Allow connections from any origin
+app.use(cors(
+   { origin:"*",
+    Credentials:true
+   }
+) )
+// Allow connections from any origin
 
 const server = http.createServer(app);
 
