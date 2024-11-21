@@ -27,10 +27,10 @@ app.post("/generate-link", (req, res) => {
   console.log(sessionId);
   res.json({ sessionId }); 
 });
-// app.get("/",(req, res) => {
-//   console.log("hi how are you");
-//   res.send("hi how are you");
-// });
+app.get("/",(req, res) => {
+  console.log("hi how are you");
+  res.send("hi how are you");
+});
 // WebSocket connection handling
 io.on("connection", (socket) => {
   console.log("A user connected");
